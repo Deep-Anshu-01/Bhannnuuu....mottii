@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday Bhannuuu ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,serif;color:#5a3145;background:#fff0f6}
+.cover{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;background:linear-gradient(135deg,#321d29,#8c5068,#f1aec7)}
+.card{width:min(720px,94%);padding:45px 24px;border-radius:30px;background:#ffffff20;border:1px solid #ffffff55;backdrop-filter:blur(10px);color:#fff}
+h1{font-size:clamp(42px,10vw,72px);line-height:1.05;margin:12px 0}
+.name{color:#ffd0e2}
+.intro{font-size:19px;line-height:1.7}
+.open{margin-top:18px;padding:17px 42px;border:0;border-radius:999px;background:#ffd3e4;color:#6d304c;font-size:21px;font-weight:bold;cursor:pointer;box-shadow:0 8px 24px #0005}
+.memory{display:none;min-height:100vh;padding:30px 14px;background:linear-gradient(135deg,#fff8fb,#ffe1ec)}
+.memory.show{display:block}
+.memory h2{text-align:center;color:#d13f76;font-size:34px}
+.note{text-align:center;max-width:650px;margin:0 auto 22px;line-height:1.7;font-size:18px}
+.viewer{max-width:850px;margin:auto}
+.slide{display:none;text-align:center}
+.slide.active{display:block}
+.slide img{width:100%;max-height:72vh;object-fit:contain;background:white;padding:10px;border-radius:20px;box-shadow:0 12px 30px #7a3b5525}
+.slide p{font-size:21px;color:#c43b70}
+.controls{display:flex;justify-content:center;gap:18px;margin:16px}
+.controls button{width:52px;height:52px;border:0;border-radius:50%;background:#f5b1c9;color:#633047;font-size:28px;cursor:pointer}
+.dots{text-align:center;color:#d13f76;letter-spacing:6px}
+</style>
+</head>
+<body>
+
+<section class="cover" id="cover">
+  <div class="card">
+    <div style="font-size:38px">👑✨</div>
+    <h1>Happy Birthday<br><span class="name">Bhannuuu Ranii ❤️</span></h1>
+    <p class="intro">Aaj ka din sirf tumhara hai... 🌸<br>Ek chhoti si memory tumhare liye sambhal ke rakhi hai.</p>
+    <button class="open" id="openBtn">♡ Open It ♡</button>
+    <p>Click karke dekho... ✨</p>
+  </div>
+</section>
+
+<section class="memory" id="memory">
+  <h2>Our Little Memories 💗</h2>
+  <p class="note">Sabse pehle woh chhoti si Bhannuuu... 🥹🌸<br>Happy Birthday! May your day be full of smiles, happiness and beautiful moments. 🎂✨</p>
+  <div class="viewer">
+    <div class="slide"><img src="images/1000072681.jpg" alt="Our little Bhannuuu 🌸"><p>Our little Bhannuuu 🌸</p></div>
+<div class="slide"><img src="images/1000072682.jpg" alt="Little memories ✨"><p>Little memories ✨</p></div>
+<div class="slide"><img src="images/1000072683.jpg" alt="Sweet Bhannuuu 💗"><p>Sweet Bhannuuu 💗</p></div>
+<div class="slide"><img src="images/1000072680.jpg" alt="Beautiful Bhannuuu 🌷"><p>Beautiful Bhannuuu 🌷</p></div>
+<div class="slide"><img src="images/1000072679.jpg" alt="Birthday girl 🎀"><p>Birthday girl 🎀</p></div>
+    <div class="controls">
+      <button id="prev">‹</button>
+      <button id="next">›</button>
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
+</section>
+
+<script>
+const cover = document.getElementById("cover");
+const memory = document.getElementById("memory");
+const slides = Array.from(document.querySelectorAll(".slide"));
+const dots = document.getElementById("dots");
+let current = 0;
+
+function showSlide(n) {
+  current = (n + slides.length) % slides.length;
+  slides.forEach((slide, i) => slide.classList.toggle("active", i === current));
+  dots.textContent = "●".repeat(slides.length);
+}
+
+document.getElementById("openBtn").addEventListener("click", function() {
+  cover.style.display = "none";
+  memory.classList.add("show");
+  showSlide(0);
+  window.scrollTo(0, 0);
+});
+
+document.getElementById("prev").addEventListener("click", () => showSlide(current - 1));
+document.getElementById("next").addEventListener("click", () => showSlide(current + 1));
+
+showSlide(0);
+</script>
+</body>
+</html>
